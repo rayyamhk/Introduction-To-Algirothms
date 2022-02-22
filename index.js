@@ -3,29 +3,15 @@ const selectionSort = require('./chapters/chapter2/2_Selection-sort');
 const mergeSort = require('./chapters/chapter2/3_Merge-sort');
 const binarySearch = require('./chapters/chapter2/4_Binary-search');
 const bubbleSort = require('./chapters/chapter2/5_Bubble-sort');
+const {maximumSubarray, maximumSubarrayIterative, maximumSubarrayIterativeLinear} = require('./chapters/chapter4/1_Maximum-subarray');
+const {matrixMultiplication, StrassenAlgorithm} = require('./chapters/chapter4/2_Matrix-multiplication');
 
-const items = getRandomArray(20000, 0, 1000000000);
-const items1 = [...items];
-const items2 = [...items];
-const items3 = [...items];
-const items4 = [...items];
+const items = getRandomArray(10000000, -100, 100);
 
-console.time('insertion sort');
-insertionSort(items1);
-console.timeEnd('insertion sort');
-
-console.time('selection sort');
-selectionSort(items2);
-console.timeEnd('selection sort');
-
-console.time('merge sort');
-mergeSort(items3);
-console.timeEnd('merge sort');
-
-console.time('bubble sort');
-bubbleSort(items4);
-console.timeEnd('bubble sort');
-console.log(isSorted(items4))
+const A = [[1, 2, 3, 4], [3, 4, 5, 6], [5, 6, 7, 8], [7, 8, 9, 10]];
+const B = [[5, 6, 7, 8], [7, 8, 9, 10], [9, 10, 11, 12], [11, 12, 13, 14]];
+console.log(matrixMultiplication(A, B));
+console.log(StrassenAlgorithm(A, B));
 
 function getRandomArray(size, min, max) {
   const arr = new Array(size);
