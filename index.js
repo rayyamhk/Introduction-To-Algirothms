@@ -1,45 +1,61 @@
-const insertionSort = require('./chapters/chapter2/1_Insertion-sort');
-const selectionSort = require('./chapters/chapter2/2_Selection-sort');
-const mergeSort = require('./chapters/chapter2/3_Merge-sort');
-const binarySearch = require('./chapters/chapter2/4_Binary-search');
-const bubbleSort = require('./chapters/chapter2/5_Bubble-sort');
-const {heapSort} = require('./chapters/chapter6/1_Heap-sort');
-const PriorityQueue = require('./chapters/chapter6/2_Priority-queue');
-const {maximumSubarray, maximumSubarrayIterative, maximumSubarrayIterativeLinear} = require('./chapters/chapter4/1_Maximum-subarray');
-const {matrixMultiplication, StrassenAlgorithm} = require('./chapters/chapter4/2_Matrix-multiplication');
+const insertionSort = require('./chapters/chapter2/1-insertion-sort');
+const selectionSort = require('./chapters/chapter2/2-selection-sort');
+const mergeSort = require('./chapters/chapter2/3-merge-sort');
+const bubbleSort = require('./chapters/chapter2/5-bubble-sort');
+const {heapSort} = require('./chapters/chapter6/1-heap-sort');
+const {tailRecursiveQuicksort} = require('./chapters/chapter7/3-exercises');
 
-// const items1 = getRandomArray(10000, -100, 100);
-// const items2 = [...items1];
-// const items3 = [...items1];
-
-// const A = [[1, 2, 3, 4], [3, 4, 5, 6], [5, 6, 7, 8], [7, 8, 9, 10]];
-// const B = [[5, 6, 7, 8], [7, 8, 9, 10], [9, 10, 11, 12], [11, 12, 13, 14]];
-// console.log(matrixMultiplication(A, B));
-// console.log(StrassenAlgorithm(A, B));
+const items1 = getRandomArray(1000000, -100, 100);
+const items2 = [...items1];
+const items3 = [...items1];
+const items4 = [...items1];
+const items5 = [...items1];
+const items6 = [...items1];
 
 // console.time('heap-sort');
 // heapSort(items1);
 // console.timeEnd('heap-sort');
 
-// console.time('merge-sort');
-// mergeSort(items2);
-// console.timeEnd('merge-sort');
+console.time('merge-sort');
+mergeSort(items2);
+console.timeEnd('merge-sort');
 
-const priorityQueue = new PriorityQueue();
-priorityQueue.insert(10);
-priorityQueue.insert(20);
-priorityQueue.insert(30);
-console.log(priorityQueue.popMax());
-console.log(priorityQueue.heap);
-console.log(priorityQueue.popMax());
-console.log(priorityQueue.heap);
-console.log(priorityQueue.popMax());
-console.log(priorityQueue.heap);
-priorityQueue.insert(100);
-console.log(priorityQueue.heap);
-// console.log(priorityQueue.max())
-// console.log(priorityQueue.popMax());
-// console.log(priorityQueue.heap, priorityQueue.heap.size);
+const item = [2, 1, 2, 3, 2, 2, 2];
+console.time('quick-sort');
+tailRecursiveQuicksort(items3);
+console.timeEnd('quick-sort');
+
+// console.time('insertion-sort');
+// insertionSort(items6);
+// console.timeEnd('insertion-sort');
+
+// console.time('selection-sort');
+// selectionSort(items4);
+// console.timeEnd('selection-sort');
+
+// console.time('bubble-sort');
+// bubbleSort(items5);
+// console.timeEnd('bubble-sort');
+
+console.log(isSame(items2, items3));
+
+function isSame(...arrays) {
+  const numArrays = arrays.length;
+  const arrayLen = arrays[0].length;
+  let value = null;
+  for (let i = 0; i < arrayLen; i++) {
+    for (let j = 0; j < numArrays; j++) {
+      const array = arrays[j];
+      if (value === null) {
+        value = array[i];
+      } else if (array[i] !== value) {
+        return false;
+      }
+    }
+    value = null;
+  }
+  return true;
+}
 
 function getRandomArray(size, min, max) {
   const arr = new Array(size);

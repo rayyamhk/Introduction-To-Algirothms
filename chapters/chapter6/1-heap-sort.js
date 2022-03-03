@@ -34,7 +34,7 @@ function heapSort(A) {
  * Assume the subtree rooted at left(i) and right(i) are max-heaps,
  * but A[i] may not satisfy the max-heap property.
  * It swaps the A[i] downward until the subtree rooted at i satisfies the property.
- * Best: O(1), Worst: O(N), where N is the size of the subtree.
+ * Best: O(1), Worst: O(logN), where N is the size of the subtree.
  */
 function maxHeapify(A, i) {
   const l = left(i);
@@ -69,11 +69,11 @@ function parent(i) {
 }
 
 function left(i) {
-  return 2 * i;
+  return 2 * i + 1;
 }
 
 function right(i) {
-  return 2 * i + 1;
+  return 2 * (i + 1);
 }
 
 function swap(A, i, j) {
