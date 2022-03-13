@@ -2,7 +2,7 @@
 
 const {_partition, swap} = require('./1-quick-sort');
 
-module.exports = randomizedQuicksort;
+module.exports = {randomizedQuicksort, _randomizedPartition};
 
 function randomizedQuicksort(A) {
   _randomizedQuicksort(A, 0, A.length - 1);

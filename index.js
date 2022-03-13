@@ -6,52 +6,33 @@ const {heapSort} = require('./chapters/chapter6/1-heap-sort');
 const {quicksort} = require('./chapters/chapter7/1-quick-sort');
 const countingSort = require('./chapters/chapter8/1-counting-sort');
 const bucketSort = require('./chapters/chapter8/3-bucket-sort');
+const {LinkedList, LinkedListWithSentinel, Node} = require('./chapters/chapter10/3-linked-list');
 
-const item = Array(100000).fill().map(() => Math.random());
-const items1 = [...item];
-const items2 = [...item];
-const items3 = [...item];
-const items4 = [...item];
+const node1 = new Node(1);
+const node2 = new Node(2);
+const node3 = new Node(3);
+const node4 = new Node(4);
+const node5 = new Node(5);
 
-// const items1 = getRandomArray(1000000, 0, 10000);
-// const items2 = [...items1];
-// const items3 = [...items1];
-// const items4 = [...items1];
-// const items5 = [...items1];
-// const items6 = [...items1];
-
-console.time('heap-sort');
-heapSort(items1);
-console.timeEnd('heap-sort');
-
-console.time('merge-sort');
-mergeSort(items2);
-console.timeEnd('merge-sort');
-
-console.time('quick-sort');
-quicksort(items3);
-console.timeEnd('quick-sort');
-
-console.time('bucket-sort');
-const newItems4 = bucketSort(items4);
-console.timeEnd('bucket-sort');
-
-// console.time('counting-sort');
-// const newItems4 = countingSort(items4, 10000);
-// console.timeEnd('counting-sort');
-
-// console.time('insertion-sort');
-// insertionSort(items6);
-// console.timeEnd('insertion-sort');
-
-// console.time('selection-sort');
-// selectionSort(items4);
-// console.timeEnd('selection-sort');
-
-// console.time('bubble-sort');
-// bubbleSort(items5);
-// console.timeEnd('bubble-sort');
-console.log(isSame(items1, items2, items3, newItems4));
+const list = new LinkedListWithSentinel();
+list.insert(node1);
+list.insert(node2);
+list.insert(node3);
+list.insert(node4);
+list.insert(node5);
+list.display();
+list.delete(node3);
+list.display();
+list.delete(node5);
+list.display();
+list.delete(node2)
+list.display();
+// list.delete(node4)
+// list.display();
+// list.delete(node1)
+// list.display();
+list.insert(new Node(6))
+list.display()
 
 function isSame(...arrays) {
   const numArrays = arrays.length;
