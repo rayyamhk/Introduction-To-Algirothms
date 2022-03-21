@@ -6,7 +6,8 @@ const {heapSort} = require('./chapters/chapter6/1-heap-sort');
 const {quicksort} = require('./chapters/chapter7/1-quick-sort');
 const countingSort = require('./chapters/chapter8/1-counting-sort');
 const bucketSort = require('./chapters/chapter8/3-bucket-sort');
-const {LinkedList, LinkedListWithSentinel, Node} = require('./chapters/chapter10/3-linked-list');
+// const {LinkedList, LinkedListWithSentinel, Node} = require('./chapters/chapter10/3-linked-list');
+const {BinarySearchTree, Node} = require('./chapters/chapter12/binary-search-tree');
 
 const node1 = new Node(1);
 const node2 = new Node(2);
@@ -14,25 +15,13 @@ const node3 = new Node(3);
 const node4 = new Node(4);
 const node5 = new Node(5);
 
-const list = new LinkedListWithSentinel();
-list.insert(node1);
-list.insert(node2);
-list.insert(node3);
-list.insert(node4);
-list.insert(node5);
-list.display();
-list.delete(node3);
-list.display();
-list.delete(node5);
-list.display();
-list.delete(node2)
-list.display();
-// list.delete(node4)
-// list.display();
-// list.delete(node1)
-// list.display();
-list.insert(new Node(6))
-list.display()
+const tree = new BinarySearchTree();
+tree.insert(node2);
+tree.insert(node1);
+tree.insert(node3);
+// tree.postorderTreeWalk();
+// tree.delete(node2);
+console.log(tree.maximum());
 
 function isSame(...arrays) {
   const numArrays = arrays.length;
